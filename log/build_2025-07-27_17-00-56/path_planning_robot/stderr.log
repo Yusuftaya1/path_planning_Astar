@@ -1,0 +1,11 @@
+In file included from [01m[K/home/tayya/path_planning_A*/path_planning_robot/src/occupancy_map_publisher.cpp:1[m[K:
+[01m[K/home/tayya/path_planning_A*/path_planning_robot/include/path_planning_robot/occupancy_map_publisher.hpp:[m[K In constructor ‘[01m[Kpath_planning_robot::OccupancyMapPublisher::OccupancyMapPublisher()[m[K’:
+[01m[K/home/tayya/path_planning_A*/path_planning_robot/include/path_planning_robot/occupancy_map_publisher.hpp:81:18:[m[K [01;35m[Kwarning: [m[K‘[01m[Kpath_planning_robot::OccupancyMapPublisher::gen_[m[K’ will be initialized after [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+   81 |     std::mt19937 [01;35m[Kgen_[m[K;
+      |                  [01;35m[K^~~~[m[K
+[01m[K/home/tayya/path_planning_A*/path_planning_robot/include/path_planning_robot/occupancy_map_publisher.hpp:43:9:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kint path_planning_robot::OccupancyMapPublisher::total_paths_[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+   43 |     int [01;35m[Ktotal_paths_[m[K;
+      |         [01;35m[K^~~~~~~~~~~~[m[K
+[01m[K/home/tayya/path_planning_A*/path_planning_robot/src/occupancy_map_publisher.cpp:9:1:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+    9 | [01;35m[KOccupancyMapPublisher[m[K::OccupancyMapPublisher()
+      | [01;35m[K^~~~~~~~~~~~~~~~~~~~~[m[K

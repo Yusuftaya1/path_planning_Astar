@@ -1,0 +1,42 @@
+[0.009s] Invoking command in '/home/tayya/path_planning_A*/build/path_planning_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/tayya/path_planning_A*/build/path_planning_robot -- -j8 -l8
+[0.046s] [35m[1mConsolidate compiler generated dependencies of target occupancy_map_publisher[0m
+[0.064s] [ 50%] [32mBuilding CXX object CMakeFiles/occupancy_map_publisher.dir/src/occupancy_map_publisher.cpp.o[0m
+[2.115s] In file included from [01m[K/home/tayya/path_planning_A*/path_planning_robot/src/occupancy_map_publisher.cpp:1[m[K:
+[2.115s] [01m[K/home/tayya/path_planning_A*/path_planning_robot/include/path_planning_robot/occupancy_map_publisher.hpp:[m[K In constructor ‘[01m[Kpath_planning_robot::OccupancyMapPublisher::OccupancyMapPublisher()[m[K’:
+[2.115s] [01m[K/home/tayya/path_planning_A*/path_planning_robot/include/path_planning_robot/occupancy_map_publisher.hpp:79:18:[m[K [01;35m[Kwarning: [m[K‘[01m[Kpath_planning_robot::OccupancyMapPublisher::gen_[m[K’ will be initialized after [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[2.115s]    79 |     std::mt19937 [01;35m[Kgen_[m[K;
+[2.115s]       |                  [01;35m[K^~~~[m[K
+[2.115s] [01m[K/home/tayya/path_planning_A*/path_planning_robot/include/path_planning_robot/occupancy_map_publisher.hpp:43:9:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kint path_planning_robot::OccupancyMapPublisher::total_paths_[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[2.115s]    43 |     int [01;35m[Ktotal_paths_[m[K;
+[2.115s]       |         [01;35m[K^~~~~~~~~~~~[m[K
+[2.115s] [01m[K/home/tayya/path_planning_A*/path_planning_robot/src/occupancy_map_publisher.cpp:9:1:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[2.116s]     9 | [01;35m[KOccupancyMapPublisher[m[K::OccupancyMapPublisher()
+[2.116s]       | [01;35m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[4.165s] [100%] [32m[1mLinking CXX executable occupancy_map_publisher[0m
+[4.362s] [100%] Built target occupancy_map_publisher
+[4.374s] Invoked command in '/home/tayya/path_planning_A*/build/path_planning_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/tayya/path_planning_A*/build/path_planning_robot -- -j8 -l8
+[4.382s] Invoking command in '/home/tayya/path_planning_A*/build/path_planning_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/tayya/path_planning_A*/build/path_planning_robot
+[4.389s] -- Install configuration: ""
+[4.389s] -- Installing: /home/tayya/path_planning_A*/install/path_planning_robot/lib/path_planning_robot/occupancy_map_publisher
+[4.390s] -- Set runtime path of "/home/tayya/path_planning_A*/install/path_planning_robot/lib/path_planning_robot/occupancy_map_publisher" to ""
+[4.390s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/path_planning_robot
+[4.390s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/path_planning_robot/path_planning_robot
+[4.390s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/path_planning_robot/path_planning_robot/occupancy_map_publisher.hpp
+[4.390s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/path_planning_robot/launch
+[4.390s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/path_planning_robot/launch/map_publisher.launch.py
+[4.390s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/ament_index/resource_index/package_run_dependencies/path_planning_robot
+[4.390s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/ament_index/resource_index/parent_prefix_path/path_planning_robot
+[4.390s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/path_planning_robot/environment/ament_prefix_path.sh
+[4.391s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/path_planning_robot/environment/ament_prefix_path.dsv
+[4.391s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/path_planning_robot/environment/path.sh
+[4.391s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/path_planning_robot/environment/path.dsv
+[4.391s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/path_planning_robot/local_setup.bash
+[4.391s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/path_planning_robot/local_setup.sh
+[4.391s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/path_planning_robot/local_setup.zsh
+[4.391s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/path_planning_robot/local_setup.dsv
+[4.391s] -- Installing: /home/tayya/path_planning_A*/install/path_planning_robot/share/path_planning_robot/package.dsv
+[4.391s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/ament_index/resource_index/packages/path_planning_robot
+[4.391s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/path_planning_robot/cmake/path_planning_robotConfig.cmake
+[4.391s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/path_planning_robot/cmake/path_planning_robotConfig-version.cmake
+[4.391s] -- Up-to-date: /home/tayya/path_planning_A*/install/path_planning_robot/share/path_planning_robot/package.xml
+[4.392s] Invoked command in '/home/tayya/path_planning_A*/build/path_planning_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/tayya/path_planning_A*/build/path_planning_robot

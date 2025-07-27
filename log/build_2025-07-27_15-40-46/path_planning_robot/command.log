@@ -1,0 +1,6 @@
+Invoking command in '/home/tayya/path_planning_A*/build/path_planning_robot': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/tayya/path_planning_A*/path_planning_robot -DCMAKE_INSTALL_PREFIX=/home/tayya/path_planning_A*/install/path_planning_robot
+Invoked command in '/home/tayya/path_planning_A*/build/path_planning_robot' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/tayya/path_planning_A*/path_planning_robot -DCMAKE_INSTALL_PREFIX=/home/tayya/path_planning_A*/install/path_planning_robot
+Invoking command in '/home/tayya/path_planning_A*/build/path_planning_robot': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/tayya/path_planning_A*/build/path_planning_robot -- -j8 -l8
+Invoked command in '/home/tayya/path_planning_A*/build/path_planning_robot' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/tayya/path_planning_A*/build/path_planning_robot -- -j8 -l8
+Invoking command in '/home/tayya/path_planning_A*/build/path_planning_robot': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/tayya/path_planning_A*/build/path_planning_robot
+Invoked command in '/home/tayya/path_planning_A*/build/path_planning_robot' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/tayya/path_planning_A*/build/path_planning_robot
