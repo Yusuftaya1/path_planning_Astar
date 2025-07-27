@@ -4,6 +4,14 @@
 namespace path_planning_robot
 {
 
+/**
+ * @brief Constructor for A* planner node
+ * 
+ * Initializes:
+ * - Map subscriber with transient local QoS
+ * - Path publisher
+ * - Movement directions (4-connected grid)
+ */
 AStarPlanner::AStarPlanner()
 : Node("a_star_planner")
 {
@@ -30,6 +38,16 @@ AStarPlanner::AStarPlanner()
     RCLCPP_INFO(this->get_logger(), "A* Planner initialized");
 }
 
+/**
+ * @brief Callback for map updates
+ * 
+ * When new map is received:
+ * 1. Updates map data
+ * 2. Attempts to find path from start to goal
+ * 3. Publishes found path or reports failure
+ * 
+ * @param msg Received occupancy grid message
+ */
 void AStarPlanner::mapCallback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg)
 {
     map_ = msg;
@@ -62,6 +80,20 @@ void AStarPlanner::mapCallback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg
     }
 }
 
+/**
+ * @brief Implements A* path finding algorithm
+ * 
+ * Algorithm steps:
+ * 1. Maintains open set (priority queue) and closed set
+ * 2. Explores nodes based on f_cost (g_cost + h_cost)
+ * 3. Uses Manhattan distance heuristic
+ * 4. Reconstructs and publishes path when goal is reached
+ * 
+ * @param start Start node in grid
+ * @param goal Goal node in grid
+ * @return true if path found
+ * @return false if no path exists
+ */
 bool AStarPlanner::findPath(const GridNode& start, const GridNode& goal)
 {
     // Priority queue for open set
@@ -144,12 +176,36 @@ bool AStarPlanner::findPath(const GridNode& start, const GridNode& goal)
     return false;
 }
 
+/**
+ * @brief Calculates Manhattan distance heuristic
+ * 
+ * Uses Manhattan distance (L1 norm) because:
+ * 1. Grid-based movement
+ * 2. Only horizontal/vertical movement allowed
+ * 3. Admissible heuristic for A*
+ * 
+ * @param current Current node
+ * @param goal Goal node
+ * @return double Heuristic estimate of remaining cost
+ */
 double AStarPlanner::calculateHeuristic(const GridNode& current, const GridNode& goal)
 {
     // Using Manhattan distance as heuristic
     return std::abs(current.x - goal.x) + std::abs(current.y - goal.y);
 }
 
+/**
+ * @brief Checks if position is valid and traversable
+ * 
+ * Validates:
+ * 1. Coordinates are within map bounds
+ * 2. Cell is free (0) or special point (50, 25)
+ * 
+ * @param x X coordinate in grid
+ * @param y Y coordinate in grid
+ * @return true if position is valid and traversable
+ * @return false if position is invalid or blocked
+ */
 bool AStarPlanner::isValid(int x, int y) const
 {
     // Check bounds
@@ -176,6 +232,16 @@ bool AStarPlanner::isValid(int x, int y) const
     return cell_value == 0 || cell_value == 50 || cell_value == 25;
 }
 
+/**
+ * @brief Reconstructs path from goal to start
+ * 
+ * Follows parent pointers to:
+ * 1. Build complete path
+ * 2. Reverse path to get start-to-goal order
+ * 
+ * @param goal_node Goal node with parent pointers
+ * @return std::vector<GridNode> Complete path from start to goal
+ */
 std::vector<GridNode> AStarPlanner::reconstructPath(std::shared_ptr<GridNode> goal_node)
 {
     std::vector<GridNode> path;
@@ -191,6 +257,16 @@ std::vector<GridNode> AStarPlanner::reconstructPath(std::shared_ptr<GridNode> go
     return path;
 }
 
+/**
+ * @brief Publishes found path as ROS message
+ * 
+ * Converts path to ROS message by:
+ * 1. Converting grid coordinates to world coordinates
+ * 2. Adding map origin offset
+ * 3. Setting proper orientation
+ * 
+ * @param path Vector of nodes forming the path
+ */
 void AStarPlanner::publishPath(const std::vector<GridNode>& path)
 {
     nav_msgs::msg::Path path_msg;
@@ -232,6 +308,17 @@ void AStarPlanner::publishPath(const std::vector<GridNode>& path)
 
 } // namespace path_planning_robot
 
+/**
+ * @brief Main function for the A* planner node
+ * 
+ * 1. Initializes ROS 2
+ * 2. Creates and spins the node
+ * 3. Handles shutdown
+ * 
+ * @param argc Number of command line arguments
+ * @param argv Command line arguments
+ * @return int Exit status
+ */
 int main(int argc, char** argv)
 {
     rclcpp::init(argc, argv);
