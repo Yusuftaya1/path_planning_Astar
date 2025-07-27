@@ -48,17 +48,35 @@ void OccupancyMapPublisher::initializeMaze()
     goal_ = Point(ROWS-2, COLS-2);  // Hedef noktası
     
     // Initialize map message
+    map_msg_ = nav_msgs::msg::OccupancyGrid();  // Clear all fields
+    
+    // Set header
     map_msg_.header.frame_id = "map";
+    map_msg_.header.stamp = this->now();
+    
+    // Set map metadata
+    map_msg_.info.map_load_time = this->now();
     map_msg_.info.resolution = RESOLUTION;
     map_msg_.info.width = COLS;
     map_msg_.info.height = ROWS;
-    map_msg_.info.origin.position.x = -5.0;
-    map_msg_.info.origin.position.y = -5.0;
+    
+    // Set origin - center the map
+    map_msg_.info.origin.position.x = -(COLS * RESOLUTION) / 2.0;
+    map_msg_.info.origin.position.y = -(ROWS * RESOLUTION) / 2.0;
     map_msg_.info.origin.position.z = 0.0;
+    map_msg_.info.origin.orientation.x = 0.0;
+    map_msg_.info.origin.orientation.y = 0.0;
+    map_msg_.info.origin.orientation.z = 0.0;
     map_msg_.info.origin.orientation.w = 1.0;
     
-    // Initialize map data
-    map_msg_.data.resize(ROWS * COLS, 0);
+    // Initialize map data with the correct size
+    map_msg_.data.resize(ROWS * COLS, -1);  // -1 for unknown
+    
+    RCLCPP_INFO(this->get_logger(), "Map initialized with size %dx%d", ROWS, COLS);
+    RCLCPP_INFO(this->get_logger(), "Resolution: %.2f meters/cell", RESOLUTION);
+    RCLCPP_INFO(this->get_logger(), "Origin: (%.2f, %.2f)", 
+                map_msg_.info.origin.position.x,
+                map_msg_.info.origin.position.y);
 }
 
 void OccupancyMapPublisher::createMaze()
@@ -73,16 +91,31 @@ void OccupancyMapPublisher::createMaze()
     // Copy maze to occupancy grid
     for (int i = 0; i < ROWS; ++i) {
         for (int j = 0; j < COLS; ++j) {
-            map_msg_.data[i * COLS + j] = maze_[i][j] * 100;
+            std::size_t index = static_cast<std::size_t>(i * COLS + j);
+            if (index < map_msg_.data.size()) {
+                map_msg_.data[index] = maze_[i][j] * 100;
+            }
         }
     }
 
     // Mark start and goal points
-    map_msg_.data[start_.x * COLS + start_.y] = 50;  // Start point (gri)
-    map_msg_.data[goal_.x * COLS + goal_.y] = 25;   // Goal point (açık gri)
+    std::size_t start_idx = static_cast<std::size_t>(start_.x * COLS + start_.y);
+    std::size_t goal_idx = static_cast<std::size_t>(goal_.x * COLS + goal_.y);
+    if (start_idx < map_msg_.data.size()) {
+        map_msg_.data[start_idx] = 50;  // Start point (gri)
+    }
+    if (goal_idx < map_msg_.data.size()) {
+        map_msg_.data[goal_idx] = 25;   // Goal point (açık gri)
+    }
 
+    // Debug information
+    RCLCPP_INFO(this->get_logger(), "Map data size: %zu", map_msg_.data.size());
+    RCLCPP_INFO(this->get_logger(), "Expected size: %d", ROWS * COLS);
     RCLCPP_INFO(this->get_logger(), "Start point: (%d, %d)", start_.x, start_.y);
     RCLCPP_INFO(this->get_logger(), "Goal point: (%d, %d)", goal_.x, goal_.y);
+    
+    // Force an initial publish
+    publishMap();
 }
 
 bool OccupancyMapPublisher::inBounds(int r, int c) const
@@ -95,58 +128,68 @@ void OccupancyMapPublisher::generateMazePattern()
     // Initialize all cells as walls
     for (int i = 0; i < ROWS; ++i) {
         for (int j = 0; j < COLS; ++j) {
-            maze_[i][j] = 1;
+            maze_[i][j] = 1;  // 1 represents wall
             visited_[i][j] = false;
         }
     }
 
-    // Create a guaranteed path from start to goal first
-    int current_x = start_.x;
-    int current_y = start_.y;
-    maze_[current_x][current_y] = 0;  // Start point
-
-    // Create a snake-like path to the goal
-    while (current_x < goal_.x) {
-        current_x += 2;
-        maze_[current_x][current_y] = 0;
-        maze_[current_x-1][current_y] = 0;
-    }
-    while (current_y < goal_.y) {
-        current_y += 2;
-        maze_[current_x][current_y] = 0;
-        maze_[current_x][current_y-1] = 0;
-    }
-
-    // Now use DFS to create additional paths
-    for (int i = 1; i < ROWS-1; i += 2) {
-        for (int j = 1; j < COLS-1; j += 2) {
-            if (!visited_[i][j] && maze_[i][j] == 1) {
-                dfs(i, j);
-            }
-        }
-    }
-
-    // Add some random connections to create alternative paths
-    int num_extra_paths = ROWS / 4;
-    for (int i = 0; i < num_extra_paths; ++i) {
-        int x = std::uniform_int_distribution<>(2, ROWS-3)(gen_);
-        int y = std::uniform_int_distribution<>(2, COLS-3)(gen_);
+    // Frontiers for Prim's algorithm
+    std::vector<Cell> frontiers;
+    
+    // Start from cell (1,1)
+    int start_r = 1;
+    int start_c = 1;
+    
+    // Mark the start cell as path
+    maze_[start_r][start_c] = 0;
+    visited_[start_r][start_c] = true;
+    
+    // Add initial frontiers
+    if (start_r + 2 < ROWS-1) frontiers.push_back(Cell{start_r + 2, start_c});
+    if (start_c + 2 < COLS-1) frontiers.push_back(Cell{start_r, start_c + 2});
+    
+    // Prim's algorithm
+    while (!frontiers.empty()) {
+        // Pick a random frontier cell
+        int idx = std::uniform_int_distribution<>(0, frontiers.size() - 1)(gen_);
+        Cell current = frontiers[idx];
         
-        if (x % 2 == 0) x--;
-        if (y % 2 == 0) y--;
+        // Remove it from frontiers
+        frontiers[idx] = frontiers.back();
+        frontiers.pop_back();
         
-        // Create a small opening
-        if (maze_[x][y] == 1) {
-            // Check if this creates a reasonable path
-            int walls_around = 0;
-            walls_around += (maze_[x-1][y] == 1);
-            walls_around += (maze_[x+1][y] == 1);
-            walls_around += (maze_[x][y-1] == 1);
-            walls_around += (maze_[x][y+1] == 1);
+        // Skip if already visited
+        if (visited_[current.r][current.c]) continue;
+        
+        // Find neighbors that are paths (visited)
+        std::vector<Cell> neighbors;
+        if (current.r >= 2 && visited_[current.r-2][current.c])
+            neighbors.push_back(Cell{current.r-2, current.c});
+        if (current.r + 2 < ROWS-1 && visited_[current.r+2][current.c])
+            neighbors.push_back(Cell{current.r+2, current.c});
+        if (current.c >= 2 && visited_[current.r][current.c-2])
+            neighbors.push_back(Cell{current.r, current.c-2});
+        if (current.c + 2 < COLS-1 && visited_[current.r][current.c+2])
+            neighbors.push_back(Cell{current.r, current.c+2});
             
-            if (walls_around >= 2) {  // Only create opening if it doesn't make the path too easy
-                maze_[x][y] = 0;
-            }
+        if (!neighbors.empty()) {
+            // Pick a random neighbor
+            Cell neighbor = neighbors[std::uniform_int_distribution<>(0, neighbors.size() - 1)(gen_)];
+            
+            // Connect current cell to the neighbor
+            maze_[current.r][current.c] = 0;
+            maze_[(current.r + neighbor.r)/2][(current.c + neighbor.c)/2] = 0;
+            visited_[current.r][current.c] = true;
+            
+            // Add new frontiers
+            if (current.r >= 2 && !visited_[current.r-2][current.c])
+                frontiers.push_back(Cell{current.r-2, current.c});
+            if (current.r + 2 < ROWS-1 && !visited_[current.r+2][current.c])
+                frontiers.push_back(Cell{current.r+2, current.c});
+            if (current.c >= 2 && !visited_[current.r][current.c-2])
+                frontiers.push_back(Cell{current.r, current.c-2});
+            if (current.c + 2 < COLS-1 && !visited_[current.r][current.c+2])
+                frontiers.push_back(Cell{current.r, current.c+2});
         }
     }
 
@@ -158,7 +201,11 @@ void OccupancyMapPublisher::generateMazePattern()
         maze_[0][j] = maze_[ROWS-1][j] = 1;
     }
 
-    // Ensure start and goal areas are clear
+    // Set start and goal points
+    maze_[start_.x][start_.y] = 0;
+    maze_[goal_.x][goal_.y] = 0;
+
+    // Clear small area around start and goal
     for (int dx = -1; dx <= 1; dx++) {
         for (int dy = -1; dy <= 1; dy++) {
             if (inBounds(start_.x + dx, start_.y + dy)) {
@@ -169,35 +216,15 @@ void OccupancyMapPublisher::generateMazePattern()
             }
         }
     }
-}
 
-void OccupancyMapPublisher::dfs(int r, int c)
-{
-    visited_[r][c] = true;
-    maze_[r][c] = 0;  // Mark current cell as path
-
-    // Define possible directions (up, right, down, left)
-    std::array<Cell, 4> dirs = {
-        Cell(r-2, c), // up
-        Cell(r+2, c), // down
-        Cell(r, c-2), // left
-        Cell(r, c+2)  // right
-    };
-
-    // Shuffle directions randomly
-    std::shuffle(dirs.begin(), dirs.end(), gen_);
-
-    // Try each direction
-    for (const auto& d : dirs) {
-        if (inBounds(d.r, d.c) && !visited_[d.r][d.c]) {
-            // Only create path if it won't interfere with the main solution path
-            if (maze_[d.r][d.c] == 1) {  // If the target cell is still a wall
-                // Create the path
-                maze_[(r + d.r)/2][(c + d.c)/2] = 0;
-                maze_[d.r][d.c] = 0;
-                dfs(d.r, d.c);
-            }
-        }
+    // Add a few random paths to create loops (optional)
+    int extra_paths = (ROWS + COLS) / 4;
+    for (int i = 0; i < extra_paths; i++) {
+        int r = std::uniform_int_distribution<>(2, ROWS-3)(gen_);
+        int c = std::uniform_int_distribution<>(2, COLS-3)(gen_);
+        if (r % 2 == 0) r--;
+        if (c % 2 == 0) c--;
+        maze_[r][c] = 0;
     }
 }
 
@@ -274,7 +301,27 @@ void OccupancyMapPublisher::printPathInfo() const
 
 void OccupancyMapPublisher::publishMap()
 {
+    // Update timestamp
     map_msg_.header.stamp = this->now();
+    
+    // Ensure map data is properly set
+    if (map_msg_.data.empty()) {
+        RCLCPP_ERROR(this->get_logger(), "Map data is empty!");
+        return;
+    }
+
+    if (map_msg_.data.size() != ROWS * COLS) {
+        RCLCPP_ERROR(this->get_logger(), "Map data size mismatch! Expected: %d, Got: %zu", 
+                    ROWS * COLS, map_msg_.data.size());
+        return;
+    }
+
+    // Debug output
+    RCLCPP_DEBUG(this->get_logger(), "Publishing map with frame_id: %s", 
+                 map_msg_.header.frame_id.c_str());
+    RCLCPP_DEBUG(this->get_logger(), "Map dimensions: %dx%d", 
+                 map_msg_.info.width, map_msg_.info.height);
+    
     map_publisher_->publish(map_msg_);
 }
 

@@ -8,36 +8,26 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
-find_package(tf2 REQUIRED)
-find_package(tf2_ros REQUIRED)
-find_package(tf2_geometry_msgs REQUIRED)
 
-# Include directories
-include_directories(include)
-
-# Add executables
 add_executable(occupancy_map_publisher src/occupancy_map_publisher.cpp)
-ament_target_dependencies(occupancy_map_publisher
-  rclcpp
-  geometry_msgs
-  nav_msgs
-  tf2
-  tf2_ros
-  tf2_geometry_msgs
+target_include_directories(occupancy_map_publisher PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+target_compile_features(occupancy_map_publisher PUBLIC c_std_99 cxx_std_17)  # Require C++17
+ament_target_dependencies(
+  occupancy_map_publisher
+  "rclcpp"
+  "nav_msgs"
 )
 
-# Install
-install(TARGETS
-  occupancy_map_publisher
-  DESTINATION lib/${PROJECT_NAME}
-)
+install(TARGETS occupancy_map_publisher
+  DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY
-  include/
   launch
-  DESTINATION share/${PROJECT_NAME}
+  config
+  DESTINATION share/${PROJECT_NAME}/
 )
 
 if(BUILD_TESTING)

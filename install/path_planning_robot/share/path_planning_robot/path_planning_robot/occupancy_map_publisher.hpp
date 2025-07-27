@@ -36,9 +36,18 @@ public:
 
 private:
     // Maze parameters
-    static constexpr int ROWS = 50;  // Satır sayısı
-    static constexpr int COLS = 50;  // Sütun sayısı
+    static constexpr int ROWS = 20;  // Satır sayısı
+    static constexpr int COLS = 20;  // Sütun sayısı
     static constexpr double RESOLUTION = 0.2;  // metre/hücre
+    
+    // Random number generator
+    std::random_device rd_;
+    std::mt19937 gen_;
+    
+    // Path counting
+    int total_paths_;
+    std::set<std::vector<Point>> unique_paths_;
+    static constexpr int MAX_PATH_LENGTH = 1000;
     
     // Maze representation
     std::vector<std::vector<int>> maze_;
@@ -46,10 +55,14 @@ private:
     Point start_;
     Point goal_;
     
-    // Path counting
-    int total_paths_;
-    std::set<std::vector<Point>> unique_paths_;
-    static constexpr int MAX_PATH_LENGTH = 1000;
+    // ROS 2 publisher
+    rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr map_publisher_;
+    
+    // Timer for periodic publishing
+    rclcpp::TimerBase::SharedPtr publish_timer_;
+    
+    // Map message
+    nav_msgs::msg::OccupancyGrid map_msg_;
     
     // Timer callback for publishing map
     void publishMap();
@@ -74,19 +87,6 @@ private:
     void findPathsDFS(Point current, std::vector<Point>& path, 
                      std::vector<std::vector<bool>>& visited);
     void printPathInfo() const;
-    
-    // ROS 2 publisher
-    rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr map_publisher_;
-    
-    // Timer for periodic publishing
-    rclcpp::TimerBase::SharedPtr publish_timer_;
-    
-    // Map message
-    nav_msgs::msg::OccupancyGrid map_msg_;
-
-    // Random number generator
-    std::random_device rd_;
-    std::mt19937 gen_;
 };
 
 } // namespace path_planning_robot

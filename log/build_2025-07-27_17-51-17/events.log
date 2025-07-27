@@ -1,0 +1,155 @@
+[0.000000] (-) TimerEvent: {}
+[0.000267] (path_planning_robot) JobQueued: {'identifier': 'path_planning_robot', 'dependencies': OrderedDict()}
+[0.000494] (path_planning_robot) JobStarted: {'identifier': 'path_planning_robot'}
+[0.006238] (path_planning_robot) JobProgress: {'identifier': 'path_planning_robot', 'progress': 'cmake'}
+[0.006587] (path_planning_robot) Command: {'cmd': ['/usr/bin/cmake', '/home/tayya/path_planning_Astar/path_planning_robot', '-DCMAKE_INSTALL_PREFIX=/home/tayya/path_planning_Astar/install/path_planning_robot'], 'cwd': '/home/tayya/path_planning_Astar/build/path_planning_robot', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_US:en'), ('USER', 'tayya'), ('LC_TIME', 'tr_TR.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/tayya'), ('OLDPWD', '/home/tayya'), ('DESKTOP_SESSION', 'ubuntu'), ('NVM_BIN', '/home/tayya/.nvm/versions/node/v16.20.2/bin'), ('NVM_INC', '/home/tayya/.nvm/versions/node/v16.20.2/include/node'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'tr_TR.UTF-8'), ('MANAGERPID', '832'), ('SYSTEMD_EXEC_PID', '975'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '6592'), ('NVM_DIR', '/home/tayya/.nvm'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'tayya'), ('JOURNAL_STREAM', '8:6807'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'tayya'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/tayya/.nvm/versions/node/v16.20.2/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/Ubunutu:@/tmp/.ICE-unix/939,unix/Ubunutu:/tmp/.ICE-unix/939'), ('INVOCATION_ID', '2500f2ca675d4a7f90e3be8d8eaf6c76'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'tr_TR.UTF-8'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('IBUS_DISABLE_SNOOPER', '1'), ('LC_TELEPHONE', 'tr_TR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.HNKGA3'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'tr_TR.UTF-8'), ('TERMINATOR_UUID', 'urn:uuid:e1702536-e2f1-44ee-8af5-5002e87f564c'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'tr_TR.UTF-8'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'tr_TR.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/tayya/path_planning_Astar/build/path_planning_robot'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('NVM_CD_FLAGS', ''), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'tr_TR.UTF-8'), ('LC_PAPER', 'tr_TR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.073811] (path_planning_robot) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.099893] (-) TimerEvent: {}
+[0.129578] (path_planning_robot) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.135846] (path_planning_robot) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.199992] (-) TimerEvent: {}
+[0.200850] (path_planning_robot) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.207140] (path_planning_robot) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.207333] (path_planning_robot) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.207676] (path_planning_robot) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.210193] (path_planning_robot) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.287400] (path_planning_robot) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.293822] (path_planning_robot) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.294061] (path_planning_robot) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.294479] (path_planning_robot) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.296117] (path_planning_robot) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.300068] (-) TimerEvent: {}
+[0.400283] (-) TimerEvent: {}
+[0.437727] (path_planning_robot) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.500473] (-) TimerEvent: {}
+[0.508283] (path_planning_robot) StdoutLine: {'line': b'-- Found rclcpp: 16.0.14 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.537856] (path_planning_robot) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.541261] (path_planning_robot) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.547180] (path_planning_robot) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.555812] (path_planning_robot) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.567558] (path_planning_robot) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.598188] (path_planning_robot) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.600049] (path_planning_robot) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.8 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.600525] (-) TimerEvent: {}
+[0.668326] (path_planning_robot) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[0.690289] (path_planning_robot) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[0.700693] (-) TimerEvent: {}
+[0.721963] (path_planning_robot) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.728471] (path_planning_robot) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[0.791624] (path_planning_robot) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[0.792067] (path_planning_robot) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[0.800821] (-) TimerEvent: {}
+[0.862047] (path_planning_robot) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[0.863058] (path_planning_robot) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[0.900990] (-) TimerEvent: {}
+[0.904920] (path_planning_robot) StdoutLine: {'line': b'-- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[0.915555] (path_planning_robot) StdoutLine: {'line': b'-- Found nav_msgs: 4.9.0 (/opt/ros/humble/share/nav_msgs/cmake)\n'}
+[0.933321] (path_planning_robot) StdoutLine: {'line': b'-- Found tf2: 0.25.15 (/opt/ros/humble/share/tf2/cmake)\n'}
+[0.942178] (path_planning_robot) StdoutLine: {'line': b'-- Found tf2_ros: 0.25.15 (/opt/ros/humble/share/tf2_ros/cmake)\n'}
+[1.001139] (-) TimerEvent: {}
+[1.014437] (path_planning_robot) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.25.15 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)\n'}
+[1.023189] (path_planning_robot) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)\n'}
+[1.024356] (path_planning_robot) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[1.024558] (path_planning_robot) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[1.027674] (path_planning_robot) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[1.093892] (path_planning_robot) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.094153] (path_planning_robot) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/tayya/path_planning_Astar/path_planning_robot/include\n'}
+[1.094238] (path_planning_robot) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.094590] (path_planning_robot) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.095008] (path_planning_robot) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.095466] (path_planning_robot) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[1.096178] (path_planning_robot) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.096232] (path_planning_robot) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.096619] (path_planning_robot) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.097603] (path_planning_robot) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.101232] (-) TimerEvent: {}
+[1.107623] (path_planning_robot) StdoutLine: {'line': b'-- Generating done\n'}
+[1.111755] (path_planning_robot) StdoutLine: {'line': b'-- Build files have been written to: /home/tayya/path_planning_Astar/build/path_planning_robot\n'}
+[1.119887] (path_planning_robot) CommandEnded: {'returncode': 0}
+[1.120397] (path_planning_robot) JobProgress: {'identifier': 'path_planning_robot', 'progress': 'build'}
+[1.121169] (path_planning_robot) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/tayya/path_planning_Astar/build/path_planning_robot', '--', '-j8', '-l8'], 'cwd': '/home/tayya/path_planning_Astar/build/path_planning_robot', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_US:en'), ('USER', 'tayya'), ('LC_TIME', 'tr_TR.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/tayya'), ('OLDPWD', '/home/tayya'), ('DESKTOP_SESSION', 'ubuntu'), ('NVM_BIN', '/home/tayya/.nvm/versions/node/v16.20.2/bin'), ('NVM_INC', '/home/tayya/.nvm/versions/node/v16.20.2/include/node'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'tr_TR.UTF-8'), ('MANAGERPID', '832'), ('SYSTEMD_EXEC_PID', '975'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '6592'), ('NVM_DIR', '/home/tayya/.nvm'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'tayya'), ('JOURNAL_STREAM', '8:6807'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'tayya'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/tayya/.nvm/versions/node/v16.20.2/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/Ubunutu:@/tmp/.ICE-unix/939,unix/Ubunutu:/tmp/.ICE-unix/939'), ('INVOCATION_ID', '2500f2ca675d4a7f90e3be8d8eaf6c76'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'tr_TR.UTF-8'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('IBUS_DISABLE_SNOOPER', '1'), ('LC_TELEPHONE', 'tr_TR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.HNKGA3'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'tr_TR.UTF-8'), ('TERMINATOR_UUID', 'urn:uuid:e1702536-e2f1-44ee-8af5-5002e87f564c'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'tr_TR.UTF-8'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'tr_TR.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/tayya/path_planning_Astar/build/path_planning_robot'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('NVM_CD_FLAGS', ''), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'tr_TR.UTF-8'), ('LC_PAPER', 'tr_TR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[1.170742] (path_planning_robot) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/occupancy_map_publisher.dir/src/occupancy_map_publisher.cpp.o\x1b[0m\n'}
+[1.201399] (-) TimerEvent: {}
+[1.301672] (-) TimerEvent: {}
+[1.402089] (-) TimerEvent: {}
+[1.502424] (-) TimerEvent: {}
+[1.602759] (-) TimerEvent: {}
+[1.703090] (-) TimerEvent: {}
+[1.803424] (-) TimerEvent: {}
+[1.903765] (-) TimerEvent: {}
+[2.004106] (-) TimerEvent: {}
+[2.104452] (-) TimerEvent: {}
+[2.204788] (-) TimerEvent: {}
+[2.305076] (-) TimerEvent: {}
+[2.405427] (-) TimerEvent: {}
+[2.505765] (-) TimerEvent: {}
+[2.606086] (-) TimerEvent: {}
+[2.706385] (-) TimerEvent: {}
+[2.806688] (-) TimerEvent: {}
+[2.906997] (-) TimerEvent: {}
+[3.007313] (-) TimerEvent: {}
+[3.107736] (-) TimerEvent: {}
+[3.123324] (path_planning_robot) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/tayya/path_planning_Astar/path_planning_robot/src/occupancy_map_publisher.cpp:1\x1b[m\x1b[K:\n'}
+[3.123509] (path_planning_robot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/tayya/path_planning_Astar/path_planning_robot/include/path_planning_robot/occupancy_map_publisher.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Kpath_planning_robot::OccupancyMapPublisher::OccupancyMapPublisher()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.123563] (path_planning_robot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/tayya/path_planning_Astar/path_planning_robot/include/path_planning_robot/occupancy_map_publisher.hpp:63:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kpath_planning_robot::OccupancyMapPublisher::total_paths_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.123607] (path_planning_robot) StderrLine: {'line': b'   63 |     int \x1b[01;35m\x1b[Ktotal_paths_\x1b[m\x1b[K;\n'}
+[3.123647] (path_planning_robot) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.123685] (path_planning_robot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/tayya/path_planning_Astar/path_planning_robot/include/path_planning_robot/occupancy_map_publisher.hpp:54:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::mt19937 path_planning_robot::OccupancyMapPublisher::gen_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.123738] (path_planning_robot) StderrLine: {'line': b'   54 |     std::mt19937 \x1b[01;35m\x1b[Kgen_\x1b[m\x1b[K;\n'}
+[3.123777] (path_planning_robot) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[3.123816] (path_planning_robot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/tayya/path_planning_Astar/path_planning_robot/src/occupancy_map_publisher.cpp:9:1:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.123856] (path_planning_robot) StderrLine: {'line': b'    9 | \x1b[01;35m\x1b[KOccupancyMapPublisher\x1b[m\x1b[K::OccupancyMapPublisher()\n'}
+[3.123895] (path_planning_robot) StderrLine: {'line': b'      | \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.207855] (-) TimerEvent: {}
+[3.308177] (-) TimerEvent: {}
+[3.408528] (-) TimerEvent: {}
+[3.508867] (-) TimerEvent: {}
+[3.609159] (-) TimerEvent: {}
+[3.709462] (-) TimerEvent: {}
+[3.809755] (-) TimerEvent: {}
+[3.910050] (-) TimerEvent: {}
+[4.010367] (-) TimerEvent: {}
+[4.110675] (-) TimerEvent: {}
+[4.210984] (-) TimerEvent: {}
+[4.311312] (-) TimerEvent: {}
+[4.411743] (-) TimerEvent: {}
+[4.512058] (-) TimerEvent: {}
+[4.612376] (-) TimerEvent: {}
+[4.712694] (-) TimerEvent: {}
+[4.813038] (-) TimerEvent: {}
+[4.919003] (-) TimerEvent: {}
+[5.019321] (-) TimerEvent: {}
+[5.119755] (-) TimerEvent: {}
+[5.139430] (path_planning_robot) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable occupancy_map_publisher\x1b[0m\n'}
+[5.219888] (-) TimerEvent: {}
+[5.320224] (-) TimerEvent: {}
+[5.331480] (path_planning_robot) StdoutLine: {'line': b'[100%] Built target occupancy_map_publisher\n'}
+[5.343837] (path_planning_robot) CommandEnded: {'returncode': 0}
+[5.344497] (path_planning_robot) JobProgress: {'identifier': 'path_planning_robot', 'progress': 'install'}
+[5.355998] (path_planning_robot) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/tayya/path_planning_Astar/build/path_planning_robot'], 'cwd': '/home/tayya/path_planning_Astar/build/path_planning_robot', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_US:en'), ('USER', 'tayya'), ('LC_TIME', 'tr_TR.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/tayya'), ('OLDPWD', '/home/tayya'), ('DESKTOP_SESSION', 'ubuntu'), ('NVM_BIN', '/home/tayya/.nvm/versions/node/v16.20.2/bin'), ('NVM_INC', '/home/tayya/.nvm/versions/node/v16.20.2/include/node'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'tr_TR.UTF-8'), ('MANAGERPID', '832'), ('SYSTEMD_EXEC_PID', '975'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '6592'), ('NVM_DIR', '/home/tayya/.nvm'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'tayya'), ('JOURNAL_STREAM', '8:6807'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'tayya'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/tayya/.nvm/versions/node/v16.20.2/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/Ubunutu:@/tmp/.ICE-unix/939,unix/Ubunutu:/tmp/.ICE-unix/939'), ('INVOCATION_ID', '2500f2ca675d4a7f90e3be8d8eaf6c76'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'tr_TR.UTF-8'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('IBUS_DISABLE_SNOOPER', '1'), ('LC_TELEPHONE', 'tr_TR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.HNKGA3'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'tr_TR.UTF-8'), ('TERMINATOR_UUID', 'urn:uuid:e1702536-e2f1-44ee-8af5-5002e87f564c'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'tr_TR.UTF-8'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'tr_TR.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/tayya/path_planning_Astar/build/path_planning_robot'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('NVM_CD_FLAGS', ''), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'tr_TR.UTF-8'), ('LC_PAPER', 'tr_TR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[5.362678] (path_planning_robot) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[5.362837] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/lib/path_planning_robot/occupancy_map_publisher\n'}
+[5.363984] (path_planning_robot) StdoutLine: {'line': b'-- Set runtime path of "/home/tayya/path_planning_Astar/install/path_planning_robot/lib/path_planning_robot/occupancy_map_publisher" to ""\n'}
+[5.364050] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot\n'}
+[5.364126] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/path_planning_robot\n'}
+[5.364178] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/path_planning_robot/occupancy_map_publisher.hpp\n'}
+[5.364290] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/launch\n'}
+[5.364374] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/launch/map_publisher.launch.py\n'}
+[5.364508] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/ament_index/resource_index/package_run_dependencies/path_planning_robot\n'}
+[5.364643] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/ament_index/resource_index/parent_prefix_path/path_planning_robot\n'}
+[5.364774] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/environment/ament_prefix_path.sh\n'}
+[5.364871] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/environment/ament_prefix_path.dsv\n'}
+[5.364966] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/environment/path.sh\n'}
+[5.365064] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/environment/path.dsv\n'}
+[5.365163] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/local_setup.bash\n'}
+[5.365261] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/local_setup.sh\n'}
+[5.365366] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/local_setup.zsh\n'}
+[5.365467] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/local_setup.dsv\n'}
+[5.365565] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/package.dsv\n'}
+[5.365688] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/ament_index/resource_index/packages/path_planning_robot\n'}
+[5.365807] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/cmake/path_planning_robotConfig.cmake\n'}
+[5.365886] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/cmake/path_planning_robotConfig-version.cmake\n'}
+[5.365988] (path_planning_robot) StdoutLine: {'line': b'-- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/package.xml\n'}
+[5.367641] (path_planning_robot) CommandEnded: {'returncode': 0}
+[5.380643] (path_planning_robot) JobEnded: {'identifier': 'path_planning_robot', 'rc': 0}
+[5.381220] (-) EventReactorShutdown: {}
