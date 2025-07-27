@@ -77,6 +77,10 @@ void OccupancyMapPublisher::initializeMaze()
     RCLCPP_INFO(this->get_logger(), "Origin: (%.2f, %.2f)", 
                 map_msg_.info.origin.position.x,
                 map_msg_.info.origin.position.y);
+    RCLCPP_INFO(this->get_logger(), "Start grid position: (%d, %d)", start_.x, start_.y);
+    RCLCPP_INFO(this->get_logger(), "Start world position: (%.2f, %.2f)",
+                map_msg_.info.origin.position.x + (start_.y + 0.5) * RESOLUTION,
+                map_msg_.info.origin.position.y + (start_.x + 0.5) * RESOLUTION);
 }
 
 void OccupancyMapPublisher::createMaze()
@@ -103,9 +107,13 @@ void OccupancyMapPublisher::createMaze()
     std::size_t goal_idx = static_cast<std::size_t>(goal_.x * COLS + goal_.y);
     if (start_idx < map_msg_.data.size()) {
         map_msg_.data[start_idx] = 50;  // Start point (gri)
+        RCLCPP_INFO(this->get_logger(), "Start point marked at index %zu (%d,%d) with value 50",
+                   start_idx, start_.x, start_.y);
     }
     if (goal_idx < map_msg_.data.size()) {
         map_msg_.data[goal_idx] = 25;   // Goal point (açık gri)
+        RCLCPP_INFO(this->get_logger(), "Goal point marked at index %zu (%d,%d) with value 25",
+                   goal_idx, goal_.x, goal_.y);
     }
 
     // Debug information
@@ -114,8 +122,24 @@ void OccupancyMapPublisher::createMaze()
     RCLCPP_INFO(this->get_logger(), "Start point: (%d, %d)", start_.x, start_.y);
     RCLCPP_INFO(this->get_logger(), "Goal point: (%d, %d)", goal_.x, goal_.y);
     
-    // Force an initial publish
-    publishMap();
+    // Print a small section of the map around start and goal points
+    printMapSection(start_.x, start_.y, "Start");
+    printMapSection(goal_.x, goal_.y, "Goal");
+}
+
+void OccupancyMapPublisher::printMapSection(int center_x, int center_y, const std::string& label)
+{
+    RCLCPP_INFO(this->get_logger(), "Map section around %s point (%d,%d):", label.c_str(), center_x, center_y);
+    for (int i = std::max(0, center_x - 2); i <= std::min(ROWS - 1, center_x + 2); ++i) {
+        std::string line;
+        for (int j = std::max(0, center_y - 2); j <= std::min(COLS - 1, center_y + 2); ++j) {
+            int index = i * COLS + j;
+            if (index < map_msg_.data.size()) {
+                line += std::to_string(static_cast<int>(map_msg_.data[index])) + " ";
+            }
+        }
+        RCLCPP_INFO(this->get_logger(), "%s", line.c_str());
+    }
 }
 
 bool OccupancyMapPublisher::inBounds(int r, int c) const

@@ -22,6 +22,13 @@ def generate_launch_description():
             name='occupancy_map_publisher',
             output='screen'
         ),
+        # A* planner node
+        Node(
+            package='path_planning_robot',
+            executable='a_star_planner',
+            name='a_star_planner',
+            output='screen'
+        ),
         # RViz2 with custom configuration
         Node(
             package='rviz2',

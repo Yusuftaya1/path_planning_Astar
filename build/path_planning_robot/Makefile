@@ -210,6 +210,43 @@ occupancy_map_publisher/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/occupancy_map_publisher.dir/build.make CMakeFiles/occupancy_map_publisher.dir/build
 .PHONY : occupancy_map_publisher/fast
 
+#=============================================================================
+# Target rules for targets named a_star_planner
+
+# Build rule for target.
+a_star_planner: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 a_star_planner
+.PHONY : a_star_planner
+
+# fast build rule for target.
+a_star_planner/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a_star_planner.dir/build.make CMakeFiles/a_star_planner.dir/build
+.PHONY : a_star_planner/fast
+
+src/a_star_planner.o: src/a_star_planner.cpp.o
+.PHONY : src/a_star_planner.o
+
+# target to build an object file
+src/a_star_planner.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a_star_planner.dir/build.make CMakeFiles/a_star_planner.dir/src/a_star_planner.cpp.o
+.PHONY : src/a_star_planner.cpp.o
+
+src/a_star_planner.i: src/a_star_planner.cpp.i
+.PHONY : src/a_star_planner.i
+
+# target to preprocess a source file
+src/a_star_planner.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a_star_planner.dir/build.make CMakeFiles/a_star_planner.dir/src/a_star_planner.cpp.i
+.PHONY : src/a_star_planner.cpp.i
+
+src/a_star_planner.s: src/a_star_planner.cpp.s
+.PHONY : src/a_star_planner.s
+
+# target to generate assembly for a file
+src/a_star_planner.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a_star_planner.dir/build.make CMakeFiles/a_star_planner.dir/src/a_star_planner.cpp.s
+.PHONY : src/a_star_planner.cpp.s
+
 src/occupancy_map_publisher.o: src/occupancy_map_publisher.cpp.o
 .PHONY : src/occupancy_map_publisher.o
 
@@ -249,7 +286,11 @@ help:
 	@echo "... test"
 	@echo "... path_planning_robot_uninstall"
 	@echo "... uninstall"
+	@echo "... a_star_planner"
 	@echo "... occupancy_map_publisher"
+	@echo "... src/a_star_planner.o"
+	@echo "... src/a_star_planner.i"
+	@echo "... src/a_star_planner.s"
 	@echo "... src/occupancy_map_publisher.o"
 	@echo "... src/occupancy_map_publisher.i"
 	@echo "... src/occupancy_map_publisher.s"

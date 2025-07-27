@@ -36,9 +36,9 @@ public:
 
 private:
     // Maze parameters
-    static constexpr int ROWS = 40;  // Satır sayısı
-    static constexpr int COLS = 40;  // Sütun sayısı
-    static constexpr double RESOLUTION = 0.2;  // metre/hücre
+    static constexpr int ROWS = 50;  // Satır sayısı
+    static constexpr int COLS = 50;  // Sütun sayısı
+    static constexpr double RESOLUTION = 0.1;  // metre/hücre - daha detaylı grid için küçülttük
     
     // Random number generator
     std::random_device rd_;
@@ -47,7 +47,7 @@ private:
     // Path counting
     int total_paths_;
     std::set<std::vector<Point>> unique_paths_;
-    static constexpr int MAX_PATH_LENGTH = 1000;
+    static constexpr int MAX_PATH_LENGTH = 2000;  // Arttırıldı çünkü harita büyüdü
     
     // Maze representation
     std::vector<std::vector<int>> maze_;
@@ -76,6 +76,7 @@ private:
     // Helper functions
     bool isValid(int x, int y) const;
     void printMazeToLog() const;
+    void printMapSection(int center_x, int center_y, const std::string& label);
     
     // DFS Maze Generation
     void generateMazePattern();

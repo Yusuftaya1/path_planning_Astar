@@ -9,20 +9,37 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
 
+# Add executables
 add_executable(occupancy_map_publisher src/occupancy_map_publisher.cpp)
 target_include_directories(occupancy_map_publisher PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
-target_compile_features(occupancy_map_publisher PUBLIC c_std_99 cxx_std_17)  # Require C++17
+target_compile_features(occupancy_map_publisher PUBLIC c_std_99 cxx_std_17)
 ament_target_dependencies(
   occupancy_map_publisher
   "rclcpp"
   "nav_msgs"
 )
 
-install(TARGETS occupancy_map_publisher
-  DESTINATION lib/${PROJECT_NAME})
+add_executable(a_star_planner src/a_star_planner.cpp)
+target_include_directories(a_star_planner PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+target_compile_features(a_star_planner PUBLIC c_std_99 cxx_std_17)
+ament_target_dependencies(
+  a_star_planner
+  "rclcpp"
+  "nav_msgs"
+  "geometry_msgs"
+)
+
+install(TARGETS
+  occupancy_map_publisher
+  a_star_planner
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 install(DIRECTORY
   launch
