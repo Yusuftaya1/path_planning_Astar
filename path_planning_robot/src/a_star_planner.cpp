@@ -102,7 +102,7 @@ bool AStarPlanner::findPath(const GridNode& start, const GridNode& goal)
                        CompareNode> open_set;
     
     // Hash map for closed set using coordinate pairs
-    std::unordered_map<std::pair<int, int>, bool, GridNodeHash> closed_set;
+    std::unordered_map<std::pair<int, int>, double, GridNodeHash> best_costs;
     
     // Initialize start node
     auto start_node = std::make_shared<GridNode>(start);
@@ -112,7 +112,7 @@ bool AStarPlanner::findPath(const GridNode& start, const GridNode& goal)
     open_set.push(start_node);
     
     int iterations = 0;
-    const int max_iterations = map_width_ * map_height_ * 2;  // Arttırıldı çünkü harita büyüdü
+    const int max_iterations = map_width_ * map_height_ * 2;
     
     RCLCPP_INFO(this->get_logger(), "Starting A* search from (%d,%d) to (%d,%d)",
                 start.x, start.y, goal.x, goal.y);
@@ -126,22 +126,27 @@ bool AStarPlanner::findPath(const GridNode& start, const GridNode& goal)
         if (current->x == goal.x && current->y == goal.y) {
             auto path = reconstructPath(current);
             publishPath(path);
-            RCLCPP_INFO(this->get_logger(), "Path found in %d iterations with %zu steps",
-                       iterations, path.size());
+            RCLCPP_INFO(this->get_logger(), "Path found in %d iterations with %zu steps and total cost %.2f",
+                       iterations, path.size(), current->g_cost);
             return true;
         }
         
         // Add to closed set using coordinate pair
         auto current_pair = std::make_pair(current->x, current->y);
-        if (closed_set[current_pair]) {
-            continue;  // Skip if already processed
+        
+        // Skip if we already found a better path to this node
+        if (best_costs.find(current_pair) != best_costs.end() && 
+            best_costs[current_pair] <= current->g_cost) {
+            continue;
         }
-        closed_set[current_pair] = true;
+        
+        // Update best cost to this node
+        best_costs[current_pair] = current->g_cost;
         
         // Progress update every 1000 iterations
         if (iterations % 1000 == 0) {
-            RCLCPP_INFO(this->get_logger(), "A* search in progress: %d iterations, current position (%d,%d)",
-                       iterations, current->x, current->y);
+            RCLCPP_INFO(this->get_logger(), "A* search in progress: %d iterations, current position (%d,%d), cost %.2f",
+                       iterations, current->x, current->y, current->g_cost);
         }
         
         // Check all possible directions
@@ -149,19 +154,22 @@ bool AStarPlanner::findPath(const GridNode& start, const GridNode& goal)
             int new_x = current->x + dir.first;
             int new_y = current->y + dir.second;
             
-            // Skip if not valid or in closed set
+            // Skip if not valid
             if (!isValid(new_x, new_y)) {
-                continue;
-            }
-            
-            auto coord_pair = std::make_pair(new_x, new_y);
-            if (closed_set[coord_pair]) {
                 continue;
             }
             
             // Calculate new costs
             double new_g_cost = current->g_cost + 1.0;  // Cost of 1 for orthogonal movements
             
+            // Check if we already found a better path to this neighbor
+            auto neighbor_pair = std::make_pair(new_x, new_y);
+            if (best_costs.find(neighbor_pair) != best_costs.end() && 
+                best_costs[neighbor_pair] <= new_g_cost) {
+                continue;
+            }
+            
+            // Create new neighbor node
             auto neighbor_node = std::make_shared<GridNode>(new_x, new_y);
             neighbor_node->g_cost = new_g_cost;
             neighbor_node->h_cost = calculateHeuristic(*neighbor_node, goal);
