@@ -59,10 +59,7 @@ private:
     std::random_device rd_;
     std::mt19937 gen_;
     
-    // Path counting
-    int total_paths_;
-    std::set<std::vector<Point>> unique_paths_;
-    static constexpr int MAX_PATH_LENGTH = 2000;  // Arttırıldı çünkü harita büyüdü
+    // ...
     
     // Maze representation
     std::vector<std::vector<int>> maze_;
@@ -97,69 +94,11 @@ private:
      */
     void createMaze();
     
-    /**
-     * @brief Checks if given coordinates are within maze bounds
-     * @param x Row coordinate to check
-     * @param y Column coordinate to check
-     * @return true if coordinates are valid, false otherwise
-     */
-    bool isValid(int x, int y) const;
+    // ...
     
-    /**
-     * @brief Prints the current maze state to ROS logs
-     * Shows walls, paths, start and goal points
-     */
-    void printMazeToLog() const;
-    
-    /**
-     * @brief Prints a section of the maze around given coordinates
-     * @param center_x Center row coordinate
-     * @param center_y Center column coordinate
-     * @param label Description of the section (e.g., "Start", "Goal")
-     */
-    void printMapSection(int center_x, int center_y, const std::string& label);
-    
-    /**
-     * @brief Generates maze pattern using Prim's algorithm
-     * Creates a perfect maze with exactly one path between any two points
-     */
     void generateMazePattern();
     
-    /**
-     * @brief Checks if given coordinates are within maze bounds
-     * @param r Row coordinate to check
-     * @param c Column coordinate to check
-     * @return true if coordinates are valid, false otherwise
-     */
     bool inBounds(int r, int c) const;
-    
-    /**
-     * @brief Recursive DFS helper for finding all possible paths
-     * @param r Current row coordinate
-     * @param c Current column coordinate
-     */
-    void dfs(int r, int c);
-    
-    /**
-     * @brief Finds all possible paths from start to goal
-     * Uses DFS to explore and store unique paths
-     */
-    void findAllPaths();
-    
-    /**
-     * @brief DFS implementation for path finding
-     * @param current Current point in the maze
-     * @param path Current path being explored
-     * @param visited Track of visited cells
-     */
-    void findPathsDFS(Point current, std::vector<Point>& path, 
-                     std::vector<std::vector<bool>>& visited);
-    
-    /**
-     * @brief Prints statistics about found paths
-     * Shows total paths, unique paths, shortest and longest paths
-     */
-    void printPathInfo() const;
 };
 
 } // namespace path_planning_robot

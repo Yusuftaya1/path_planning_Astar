@@ -16,8 +16,7 @@ namespace path_planning_robot
  * - Creates and publishes initial maze
  */
 OccupancyMapPublisher::OccupancyMapPublisher()
-: Node("occupancy_map_publisher"), gen_(rd_()), total_paths_(0)
-{
+: Node("occupancy_map_publisher"), gen_(rd_()){
     // Initialize publisher
     map_publisher_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>(
         "map",
@@ -30,12 +29,7 @@ OccupancyMapPublisher::OccupancyMapPublisher()
     // Create maze pattern
     createMaze();
     
-    // Find all possible paths
-    findAllPaths();
-    
-    // Print maze and path info
-    printMazeToLog();
-    printPathInfo();
+    // Sadece maze oluşturulacak ve publish edilecek
     
     // Create timer for periodic publishing (2Hz)
     publish_timer_ = this->create_wall_timer(
@@ -55,8 +49,7 @@ OccupancyMapPublisher::OccupancyMapPublisher()
  * - Map message parameters (resolution, origin, etc.)
  * - Initializes occupancy grid data
  */
-void OccupancyMapPublisher::initializeMaze()
-{
+void OccupancyMapPublisher::initializeMaze(){
     // Initialize maze with all walls
     maze_.resize(ROWS, std::vector<int>(COLS, 1));
     visited_.resize(ROWS, std::vector<bool>(COLS, false));
@@ -111,79 +104,61 @@ void OccupancyMapPublisher::initializeMaze()
  * 4. Marks special points (start/goal)
  * 5. Prints debug information
  */
-void OccupancyMapPublisher::createMaze()
-{
-    // Generate maze using DFS
+void OccupancyMapPublisher::createMaze() {
+    // Maze oluştur
     generateMazePattern();
 
-    // Ensure start and goal points are accessible
+    // Start ve Goal açık
     maze_[start_.x][start_.y] = 0;
     maze_[goal_.x][goal_.y] = 0;
 
-    // Copy maze to occupancy grid
-    for (int i = 0; i < ROWS; ++i) {
-        for (int j = 0; j < COLS; ++j) {
-            std::size_t index = static_cast<std::size_t>(i * COLS + j);
-            if (index < map_msg_.data.size()) {
-                map_msg_.data[index] = maze_[i][j] * 100;
+    // Ekstra yollar ekle (loop)
+    int extra_paths = (ROWS * COLS) / 10;
+    for (int i = 0; i < extra_paths; i++) {
+        int r = std::uniform_int_distribution<>(2, ROWS-3)(gen_);
+        int c = std::uniform_int_distribution<>(2, COLS-3)(gen_);
+        if (maze_[r][c] == 1) {
+            int walls = 0;
+            bool up = maze_[r-1][c] == 1;
+            bool down = maze_[r+1][c] == 1;
+            bool left = maze_[r][c-1] == 1;
+            bool right = maze_[r][c+1] == 1;
+            walls += up + down + left + right;
+
+            if (walls >= 3) {
+                // Mevcut hücreyi aç
+                maze_[r][c] = 0;
+
+                // Komşu engelleri listele
+                std::vector<std::pair<int,int>> neighbors;
+                if (up) neighbors.emplace_back(r-1, c);
+                if (down) neighbors.emplace_back(r+1, c);
+                if (left) neighbors.emplace_back(r, c-1);
+                if (right) neighbors.emplace_back(r, c+1);
+
+                // Rastgele bir komşu engeli daha kaldır
+                if (!neighbors.empty()) {
+                    auto extra = neighbors[std::uniform_int_distribution<>(0, neighbors.size()-1)(gen_)];
+                    maze_[extra.first][extra.second] = 0;
+                }
             }
         }
     }
 
-    // Mark start and goal points
-    std::size_t start_idx = static_cast<std::size_t>(start_.x * COLS + start_.y);
-    std::size_t goal_idx = static_cast<std::size_t>(goal_.x * COLS + goal_.y);
-    if (start_idx < map_msg_.data.size()) {
-        map_msg_.data[start_idx] = 50;  // Start point (gri)
-        RCLCPP_INFO(this->get_logger(), "Start point marked at index %zu (%d,%d) with value 50",
-                   start_idx, start_.x, start_.y);
-    }
-    if (goal_idx < map_msg_.data.size()) {
-        map_msg_.data[goal_idx] = 25;   // Goal point (açık gri)
-        RCLCPP_INFO(this->get_logger(), "Goal point marked at index %zu (%d,%d) with value 25",
-                   goal_idx, goal_.x, goal_.y);
+    // OccupancyGrid verisini doldur
+    map_msg_.data.assign(ROWS * COLS, -1);
+    for (int i = 0; i < ROWS; ++i) {
+        for (int j = 0; j < COLS; ++j) {
+            std::size_t idx = i * COLS + j;
+            map_msg_.data[idx] = (maze_[i][j] == 1) ? 100 : 0;
+        }
     }
 
-    // Debug information
-    RCLCPP_INFO(this->get_logger(), "Map data size: %zu", map_msg_.data.size());
-    RCLCPP_INFO(this->get_logger(), "Expected size: %d", ROWS * COLS);
-    RCLCPP_INFO(this->get_logger(), "Start point: (%d, %d)", start_.x, start_.y);
-    RCLCPP_INFO(this->get_logger(), "Goal point: (%d, %d)", goal_.x, goal_.y);
-    
-    // Print a small section of the map around start and goal points
-    printMapSection(start_.x, start_.y, "Start");
-    printMapSection(goal_.x, goal_.y, "Goal");
-}
+    // Start ve Goal işaretle
+    map_msg_.data[start_.x * COLS + start_.y] = 50;
+    map_msg_.data[goal_.x * COLS + goal_.y] = 25;}
 
-/**
- * @brief Prints path analysis information to ROS logs
- * 
- * Outputs:
- * - Total number of paths attempted
- * - Number of unique paths found
- * - Length of shortest and longest paths
- */
-void OccupancyMapPublisher::printPathInfo() const
-{
-    RCLCPP_INFO(this->get_logger(), "Path Analysis:");
-    RCLCPP_INFO(this->get_logger(), "Total paths attempted: %d", total_paths_);
-    RCLCPP_INFO(this->get_logger(), "Unique paths found: %zu", unique_paths_.size());
-    
-    if (!unique_paths_.empty()) {
-        // Find shortest and longest paths
-        auto shortest = std::min_element(unique_paths_.begin(), unique_paths_.end(),
-            [](const std::vector<Point>& a, const std::vector<Point>& b) {
-                return a.size() < b.size();
-            });
-        auto longest = std::max_element(unique_paths_.begin(), unique_paths_.end(),
-            [](const std::vector<Point>& a, const std::vector<Point>& b) {
-                return a.size() < b.size();
-            });
-        
-        RCLCPP_INFO(this->get_logger(), "Shortest path length: %zu steps", shortest->size());
-        RCLCPP_INFO(this->get_logger(), "Longest path length: %zu steps", longest->size());
-    }
-}
+
 
 /**
  * @brief Publishes current maze state as occupancy grid
@@ -193,8 +168,7 @@ void OccupancyMapPublisher::printPathInfo() const
  * 2. Publish current maze state
  * Used by RViz and other nodes for visualization
  */
-void OccupancyMapPublisher::publishMap()
-{
+void OccupancyMapPublisher::publishMap(){
     // Update timestamp
     map_msg_.header.stamp = this->now();
     
@@ -227,8 +201,7 @@ void OccupancyMapPublisher::publishMap()
  * @return true if coordinates are within bounds
  * @return false if coordinates are outside bounds
  */
-bool OccupancyMapPublisher::inBounds(int r, int c) const
-{
+bool OccupancyMapPublisher::inBounds(int r, int c) const{
     return r >= 0 && r < ROWS && c >= 0 && c < COLS;
 }
 
@@ -243,8 +216,7 @@ bool OccupancyMapPublisher::inBounds(int r, int c) const
  * 5. Clears areas around start and goal
  * 6. Adds some random paths for alternatives
  */
-void OccupancyMapPublisher::generateMazePattern()
-{
+void OccupancyMapPublisher::generateMazePattern(){
     // Initialize all cells as walls
     for (int i = 0; i < ROWS; ++i) {
         for (int j = 0; j < COLS; ++j) {
@@ -347,148 +319,6 @@ void OccupancyMapPublisher::generateMazePattern()
         maze_[r][c] = 0;
     }
 }
-
-/**
- * @brief Finds all possible paths from start to goal
- * 
- * Uses DFS to:
- * 1. Explore all possible routes
- * 2. Store unique paths
- * 3. Calculate path statistics
- */
-void OccupancyMapPublisher::findAllPaths()
-{
-    std::vector<std::vector<bool>> visited(ROWS, std::vector<bool>(COLS, false));
-    std::vector<Point> current_path;
-    
-    // Start DFS from start point
-    findPathsDFS(start_, current_path, visited);
-    
-    RCLCPP_INFO(this->get_logger(), "Found %d unique paths", static_cast<int>(unique_paths_.size()));
-}
-
-/**
- * @brief DFS implementation for path finding
- * 
- * Recursively:
- * 1. Explores possible paths
- * 2. Tracks visited cells
- * 3. Stores valid paths when goal is reached
- * 
- * @param current Current position in maze
- * @param path Current path being explored
- * @param visited Tracks visited cells
- */
-void OccupancyMapPublisher::findPathsDFS(Point current, std::vector<Point>& path,
-                                       std::vector<std::vector<bool>>& visited)
-{
-    // Check if path is too long
-    if (path.size() > MAX_PATH_LENGTH) {
-        return;
-    }
-
-    // Mark current cell as visited
-    visited[current.x][current.y] = true;
-    path.push_back(current);
-
-    // If we reached the goal, save the path
-    if (current.x == goal_.x && current.y == goal_.y) {
-        unique_paths_.insert(path);
-        total_paths_++;
-    } else {
-        // Direction vectors (up, right, down, left)
-        const int dx[] = {-1, 0, 1, 0};
-        const int dy[] = {0, 1, 0, -1};
-
-        // Try all possible directions
-        for (int i = 0; i < 4; i++) {
-            int new_x = current.x + dx[i];
-            int new_y = current.y + dy[i];
-
-            // Check if the new position is valid and not visited
-            if (isValid(new_x, new_y) && !visited[new_x][new_y]) {
-                findPathsDFS(Point(new_x, new_y), path, visited);
-            }
-        }
-    }
-
-    // Backtrack
-    visited[current.x][current.y] = false;
-    path.pop_back();
-}
-
-/**
- * @brief Prints current maze state to ROS logs
- * 
- * Visualizes:
- * - Walls (#)
- * - Paths (.)
- * - Start point (S)
- * - Goal point (G)
- */
-void OccupancyMapPublisher::printMazeToLog() const
-{
-    std::string maze_str = "\nMaze Pattern:\n";
-    for (int i = 0; i < ROWS; ++i) {
-        for (int j = 0; j < COLS; ++j) {
-            if (i == start_.x && j == start_.y)
-                maze_str += "S ";
-            else if (i == goal_.x && j == goal_.y)
-                maze_str += "G ";
-            else if (maze_[i][j] == 1)
-                maze_str += "# ";
-            else
-                maze_str += ". ";
-        }
-        maze_str += "\n";
-    }
-    RCLCPP_INFO(this->get_logger(), "%s", maze_str.c_str());
-}
-
-/**
- * @brief Prints a section of the maze around specified coordinates
- * 
- * Useful for debugging specific areas of the maze
- * Shows 5x5 grid centered on given coordinates
- * 
- * @param center_x Center row coordinate
- * @param center_y Center column coordinate
- * @param label Description of the section being printed
- */
-void OccupancyMapPublisher::printMapSection(int center_x, int center_y, const std::string& label)
-{
-    RCLCPP_INFO(this->get_logger(), "Map section around %s point (%d,%d):", label.c_str(), center_x, center_y);
-    for (int i = std::max(0, center_x - 2); i <= std::min(ROWS - 1, center_x + 2); ++i) {
-        std::string line;
-        for (int j = std::max(0, center_y - 2); j <= std::min(COLS - 1, center_y + 2); ++j) {
-            int index = i * COLS + j;
-            if (index < map_msg_.data.size()) {
-                line += std::to_string(static_cast<int>(map_msg_.data[index])) + " ";
-            }
-        }
-        RCLCPP_INFO(this->get_logger(), "%s", line.c_str());
-    }
-}
-
-/**
- * @brief Checks if given coordinates are valid
- * 
- * Validates:
- * 1. Coordinates are within bounds
- * 2. Cell is not a wall
- * 
- * @param x Row coordinate
- * @param y Column coordinate
- * @return true if position is valid
- * @return false if position is invalid
- */
-bool OccupancyMapPublisher::isValid(int x, int y) const
-{
-    return (x >= 0 && x < ROWS &&
-            y >= 0 && y < COLS &&
-            maze_[x][y] == 0);
-}
-
 } // namespace path_planning_robot
 
 /**
@@ -502,11 +332,10 @@ bool OccupancyMapPublisher::isValid(int x, int y) const
  * @param argv Command line arguments
  * @return int Exit status
  */
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv){
     rclcpp::init(argc, argv);
     auto node = std::make_shared<path_planning_robot::OccupancyMapPublisher>();
     rclcpp::spin(node);
     rclcpp::shutdown();
     return 0;
-} 
+}

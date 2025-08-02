@@ -1,0 +1,39 @@
+[0.009s] Invoking command in '/home/tayya/path_planning_Astar/build/path_planning_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/tayya/path_planning_Astar/build/path_planning_robot -- -j8 -l8
+[0.046s] [35m[1mConsolidate compiler generated dependencies of target a_star_planner[0m
+[0.046s] [35m[1mConsolidate compiler generated dependencies of target occupancy_map_publisher[0m
+[0.064s] [ 25%] [32mBuilding CXX object CMakeFiles/a_star_planner.dir/src/a_star_planner.cpp.o[0m
+[0.068s] [ 75%] Built target occupancy_map_publisher
+[2.226s] [01m[K/home/tayya/path_planning_Astar/path_planning_robot/src/a_star_planner.cpp:[m[K In member function ‘[01m[Kbool path_planning_robot::AStarPlanner::isValid(int, int) const[m[K’:
+[2.226s] [01m[K/home/tayya/path_planning_Astar/path_planning_robot/src/a_star_planner.cpp:218:15:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<signed char, std::allocator<signed char> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[2.226s]   218 |     if ([01;35m[Kindex >= map_->data.size()[m[K) {
+[2.226s]       |         [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~[m[K
+[7.886s] [100%] [32m[1mLinking CXX executable a_star_planner[0m
+[8.303s] [100%] Built target a_star_planner
+[8.315s] Invoked command in '/home/tayya/path_planning_Astar/build/path_planning_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/tayya/path_planning_Astar/build/path_planning_robot -- -j8 -l8
+[8.324s] Invoking command in '/home/tayya/path_planning_Astar/build/path_planning_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/tayya/path_planning_Astar/build/path_planning_robot
+[8.333s] -- Install configuration: ""
+[8.333s] -- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/lib/path_planning_robot/occupancy_map_publisher
+[8.334s] -- Set runtime path of "/home/tayya/path_planning_Astar/install/path_planning_robot/lib/path_planning_robot/occupancy_map_publisher" to ""
+[8.334s] -- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/lib/path_planning_robot/a_star_planner
+[8.338s] -- Set runtime path of "/home/tayya/path_planning_Astar/install/path_planning_robot/lib/path_planning_robot/a_star_planner" to ""
+[8.338s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot//launch
+[8.338s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot//launch/map_publisher.launch.py
+[8.338s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot//config
+[8.338s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot//config/rviz
+[8.338s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot//config/rviz/map_view.rviz
+[8.338s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/ament_index/resource_index/package_run_dependencies/path_planning_robot
+[8.338s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/ament_index/resource_index/parent_prefix_path/path_planning_robot
+[8.338s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/environment/ament_prefix_path.sh
+[8.338s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/environment/ament_prefix_path.dsv
+[8.338s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/environment/path.sh
+[8.338s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/environment/path.dsv
+[8.338s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/local_setup.bash
+[8.338s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/local_setup.sh
+[8.339s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/local_setup.zsh
+[8.339s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/local_setup.dsv
+[8.339s] -- Installing: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/package.dsv
+[8.339s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/ament_index/resource_index/packages/path_planning_robot
+[8.339s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/cmake/path_planning_robotConfig.cmake
+[8.339s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/cmake/path_planning_robotConfig-version.cmake
+[8.339s] -- Up-to-date: /home/tayya/path_planning_Astar/install/path_planning_robot/share/path_planning_robot/package.xml
+[8.340s] Invoked command in '/home/tayya/path_planning_Astar/build/path_planning_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/tayya/path_planning_Astar/build/path_planning_robot

@@ -1,0 +1,82 @@
+[0.000000] (-) TimerEvent: {}
+[0.000417] (path_planning_robot) JobQueued: {'identifier': 'path_planning_robot', 'dependencies': OrderedDict()}
+[0.000541] (path_planning_robot) JobStarted: {'identifier': 'path_planning_robot'}
+[0.006922] (path_planning_robot) JobProgress: {'identifier': 'path_planning_robot', 'progress': 'cmake'}
+[0.007419] (path_planning_robot) JobProgress: {'identifier': 'path_planning_robot', 'progress': 'build'}
+[0.008031] (path_planning_robot) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/tayya/path_planning_Astar/build/path_planning_robot', '--', '-j8', '-l8'], 'cwd': '/home/tayya/path_planning_Astar/build/path_planning_robot', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_US:en'), ('USER', 'tayya'), ('LC_TIME', 'tr_TR.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/tayya'), ('OLDPWD', '/home/tayya'), ('DESKTOP_SESSION', 'ubuntu'), ('NVM_BIN', '/home/tayya/.nvm/versions/node/v16.20.2/bin'), ('NVM_INC', '/home/tayya/.nvm/versions/node/v16.20.2/include/node'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'tr_TR.UTF-8'), ('MANAGERPID', '845'), ('SYSTEMD_EXEC_PID', '985'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '3787'), ('NVM_DIR', '/home/tayya/.nvm'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/tayya/path_planning_Astar/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'tayya'), ('JOURNAL_STREAM', '8:1863'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'tayya'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/tayya/.nvm/versions/node/v16.20.2/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/Ubunutu:@/tmp/.ICE-unix/953,unix/Ubunutu:/tmp/.ICE-unix/953'), ('INVOCATION_ID', '65e07f00eba844beb9e1895a9b29ab49'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'tr_TR.UTF-8'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('IBUS_DISABLE_SNOOPER', '1'), ('LC_TELEPHONE', 'tr_TR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.9XWOA3'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/tayya/path_planning_Astar/install/path_planning_robot:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'tr_TR.UTF-8'), ('TERMINATOR_UUID', 'urn:uuid:04bdf6f4-8c21-48dc-957c-bd749fb5a9ce'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'tr_TR.UTF-8'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'tr_TR.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/tayya/path_planning_Astar/build/path_planning_robot'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('NVM_CD_FLAGS', ''), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'tr_TR.UTF-8'), ('LC_PAPER', 'tr_TR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/tayya/path_planning_Astar/install/path_planning_robot:/opt/ros/humble')]), 'shell': False}
+[0.048869] (path_planning_robot) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target occupancy_map_publisher\x1b[0m\n'}
+[0.049042] (path_planning_robot) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target a_star_planner\x1b[0m\n'}
+[0.066579] (path_planning_robot) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/occupancy_map_publisher.dir/src/occupancy_map_publisher.cpp.o\x1b[0m\n'}
+[0.070951] (path_planning_robot) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/a_star_planner.dir/src/a_star_planner.cpp.o\x1b[0m\n'}
+[0.099498] (-) TimerEvent: {}
+[0.199852] (-) TimerEvent: {}
+[0.300193] (-) TimerEvent: {}
+[0.400592] (-) TimerEvent: {}
+[0.505132] (-) TimerEvent: {}
+[0.605473] (-) TimerEvent: {}
+[0.705766] (-) TimerEvent: {}
+[0.806095] (-) TimerEvent: {}
+[0.906416] (-) TimerEvent: {}
+[1.006730] (-) TimerEvent: {}
+[1.107054] (-) TimerEvent: {}
+[1.207360] (-) TimerEvent: {}
+[1.307695] (-) TimerEvent: {}
+[1.407983] (-) TimerEvent: {}
+[1.508321] (-) TimerEvent: {}
+[1.608669] (-) TimerEvent: {}
+[1.708999] (-) TimerEvent: {}
+[1.809331] (-) TimerEvent: {}
+[1.909658] (-) TimerEvent: {}
+[2.009966] (-) TimerEvent: {}
+[2.110267] (-) TimerEvent: {}
+[2.210591] (-) TimerEvent: {}
+[2.310918] (-) TimerEvent: {}
+[2.411246] (-) TimerEvent: {}
+[2.462860] (path_planning_robot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/tayya/path_planning_Astar/path_planning_robot/src/a_star_planner.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid path_planning_robot::AStarPlanner::mapCallback(nav_msgs::msg::OccupancyGrid_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.463121] (path_planning_robot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/tayya/path_planning_Astar/path_planning_robot/src/a_star_planner.cpp:73:14:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kall_path_lengths_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.463237] (path_planning_robot) StderrLine: {'line': b'   73 |         if (!\x1b[01;31m\x1b[Kall_path_lengths_\x1b[m\x1b[K.empty()) {\n'}
+[2.463339] (path_planning_robot) StderrLine: {'line': b'      |              \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.491271] (path_planning_robot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/tayya/path_planning_Astar/path_planning_robot/src/a_star_planner.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kbool path_planning_robot::AStarPlanner::findPath(const path_planning_robot::GridNode&, const path_planning_robot::GridNode&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.491535] (path_planning_robot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/tayya/path_planning_Astar/path_planning_robot/src/a_star_planner.cpp:133:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kall_path_lengths_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.491672] (path_planning_robot) StderrLine: {'line': b'  133 |             \x1b[01;31m\x1b[Kall_path_lengths_\x1b[m\x1b[K.push_back(path.size());\n'}
+[2.491823] (path_planning_robot) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.496358] (path_planning_robot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/tayya/path_planning_Astar/path_planning_robot/src/a_star_planner.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kbool path_planning_robot::AStarPlanner::isValid(int, int) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.496598] (path_planning_robot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/tayya/path_planning_Astar/path_planning_robot/src/a_star_planner.cpp:229:15:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<signed char, std::allocator<signed char> >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.496749] (path_planning_robot) StderrLine: {'line': b'  229 |     if (\x1b[01;35m\x1b[Kindex >= map_->data.size()\x1b[m\x1b[K) {\n'}
+[2.496867] (path_planning_robot) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.511362] (-) TimerEvent: {}
+[2.611722] (-) TimerEvent: {}
+[2.712067] (-) TimerEvent: {}
+[2.812406] (-) TimerEvent: {}
+[2.912746] (-) TimerEvent: {}
+[3.013088] (-) TimerEvent: {}
+[3.113427] (-) TimerEvent: {}
+[3.213766] (-) TimerEvent: {}
+[3.314093] (-) TimerEvent: {}
+[3.414447] (-) TimerEvent: {}
+[3.514839] (-) TimerEvent: {}
+[3.615223] (-) TimerEvent: {}
+[3.715582] (-) TimerEvent: {}
+[3.815950] (-) TimerEvent: {}
+[3.916256] (-) TimerEvent: {}
+[4.016570] (-) TimerEvent: {}
+[4.116917] (-) TimerEvent: {}
+[4.217283] (-) TimerEvent: {}
+[4.317678] (-) TimerEvent: {}
+[4.418022] (-) TimerEvent: {}
+[4.518445] (-) TimerEvent: {}
+[4.618860] (-) TimerEvent: {}
+[4.719225] (-) TimerEvent: {}
+[4.819537] (-) TimerEvent: {}
+[4.910599] (path_planning_robot) StdoutLine: {'line': b'[ 75%] \x1b[32m\x1b[1mLinking CXX executable occupancy_map_publisher\x1b[0m\n'}
+[4.919659] (-) TimerEvent: {}
+[4.948124] (path_planning_robot) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/a_star_planner.dir/build.make:76: CMakeFiles/a_star_planner.dir/src/a_star_planner.cpp.o] Error 1\n'}
+[4.948607] (path_planning_robot) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/a_star_planner.dir/all] Error 2\n'}
+[4.948904] (path_planning_robot) StderrLine: {'line': b'gmake[1]: *** Waiting for unfinished jobs....\n'}
+[5.019824] (-) TimerEvent: {}
+[5.120228] (-) TimerEvent: {}
+[5.135018] (path_planning_robot) StdoutLine: {'line': b'[ 75%] Built target occupancy_map_publisher\n'}
+[5.136213] (path_planning_robot) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[5.138475] (path_planning_robot) CommandEnded: {'returncode': 2}
+[5.150753] (path_planning_robot) JobEnded: {'identifier': 'path_planning_robot', 'rc': 2}
+[5.161407] (-) EventReactorShutdown: {}

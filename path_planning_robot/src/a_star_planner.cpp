@@ -35,7 +35,7 @@ AStarPlanner::AStarPlanner()
         {0, -1}   // left
     };
     
-    RCLCPP_INFO(this->get_logger(), "A* Planner initialized");
+
 }
 
 /**
@@ -54,14 +54,9 @@ void AStarPlanner::mapCallback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg
     map_width_ = msg->info.width;
     map_height_ = msg->info.height;
     
-    RCLCPP_INFO(this->get_logger(), "Received map %dx%d", map_width_, map_height_);
-    
     // For testing, try to find a path from start to goal
     GridNode start(1, 1);  // Same as in occupancy_map_publisher
     GridNode goal(map_height_ - 2, map_width_ - 2);
-    
-    RCLCPP_INFO(this->get_logger(), "Planning path from (%d,%d) to (%d,%d)",
-                start.x, start.y, goal.x, goal.y);
     
     // Check if start and goal are valid
     if (!isValid(start.x, start.y)) {
@@ -114,8 +109,7 @@ bool AStarPlanner::findPath(const GridNode& start, const GridNode& goal)
     int iterations = 0;
     const int max_iterations = map_width_ * map_height_ * 2;
     
-    RCLCPP_INFO(this->get_logger(), "Starting A* search from (%d,%d) to (%d,%d)",
-                start.x, start.y, goal.x, goal.y);
+
     
     while (!open_set.empty() && iterations < max_iterations) {
         iterations++;
@@ -126,8 +120,6 @@ bool AStarPlanner::findPath(const GridNode& start, const GridNode& goal)
         if (current->x == goal.x && current->y == goal.y) {
             auto path = reconstructPath(current);
             publishPath(path);
-            RCLCPP_INFO(this->get_logger(), "Path found in %d iterations with %zu steps and total cost %.2f",
-                       iterations, path.size(), current->g_cost);
             return true;
         }
         
@@ -229,11 +221,7 @@ bool AStarPlanner::isValid(int x, int y) const
         return false;
     }
     
-    // Debug output for specific positions
-    if ((x == 1 && y == 1) || (x == map_height_-2 && y == map_width_-2)) {
-        RCLCPP_INFO(this->get_logger(), "Checking position (%d,%d): value=%d", 
-                   x, y, static_cast<int>(map_->data[index]));
-    }
+    //
     
     // Accept free space (0), start point (50), and goal point (25)
     int cell_value = static_cast<int>(map_->data[index]);
@@ -261,7 +249,7 @@ std::vector<GridNode> AStarPlanner::reconstructPath(std::shared_ptr<GridNode> go
     }
     
     std::reverse(path.begin(), path.end());
-    RCLCPP_INFO(this->get_logger(), "Path reconstructed with %zu steps", path.size());
+    //
     return path;
 }
 
@@ -304,12 +292,7 @@ void AStarPlanner::publishPath(const std::vector<GridNode>& path)
         path_msg.poses.push_back(pose);
     }
     
-    RCLCPP_INFO(this->get_logger(), "Published path with %zu poses", path_msg.poses.size());
-    RCLCPP_INFO(this->get_logger(), "First pose: (%.2f, %.2f), Last pose: (%.2f, %.2f)",
-                path_msg.poses.front().pose.position.x,
-                path_msg.poses.front().pose.position.y,
-                path_msg.poses.back().pose.position.x,
-                path_msg.poses.back().pose.position.y);
+
     
     path_pub_->publish(path_msg);
 }

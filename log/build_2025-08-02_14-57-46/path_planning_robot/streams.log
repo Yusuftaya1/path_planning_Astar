@@ -1,0 +1,19 @@
+[0.009s] Invoking command in '/home/tayya/path_planning_Astar/build/path_planning_robot': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/tayya/path_planning_Astar/build/path_planning_robot -- -j8 -l8
+[0.044s] [35m[1mConsolidate compiler generated dependencies of target occupancy_map_publisher[0m
+[0.055s] [ 50%] Built target a_star_planner
+[0.061s] [ 75%] [32mBuilding CXX object CMakeFiles/occupancy_map_publisher.dir/src/occupancy_map_publisher.cpp.o[0m
+[2.041s] [01m[K/home/tayya/path_planning_Astar/path_planning_robot/src/occupancy_map_publisher.cpp:[m[K In constructor ‘[01m[Kpath_planning_robot::OccupancyMapPublisher::OccupancyMapPublisher()[m[K’:
+[2.041s] [01m[K/home/tayya/path_planning_Astar/path_planning_robot/src/occupancy_map_publisher.cpp:19:49:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[Kpath_planning_robot::OccupancyMapPublisher[m[K’ does not have any field named ‘[01m[Ktotal_paths_[m[K’
+[2.042s]    19 | : Node("occupancy_map_publisher"), gen_(rd_()), [01;31m[Ktotal_paths_[m[K(0){
+[2.042s]       |                                                 [01;31m[K^~~~~~~~~~~~[m[K
+[2.065s] [01m[K/home/tayya/path_planning_Astar/path_planning_robot/src/occupancy_map_publisher.cpp:[m[K At global scope:
+[2.066s] [01m[K/home/tayya/path_planning_Astar/path_planning_robot/src/occupancy_map_publisher.cpp:312:2:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K}[m[K’ at end of input
+[2.066s]   312 | }
+[2.066s]       |  [01;31m[K^[m[K
+[2.066s] [01m[K/home/tayya/path_planning_Astar/path_planning_robot/src/occupancy_map_publisher.cpp:7:1:[m[K [01;36m[Knote: [m[Kto match this ‘[01m[K{[m[K’
+[2.066s]     7 | [01;36m[K{[m[K
+[2.066s]       | [01;36m[K^[m[K
+[2.805s] gmake[2]: *** [CMakeFiles/occupancy_map_publisher.dir/build.make:76: CMakeFiles/occupancy_map_publisher.dir/src/occupancy_map_publisher.cpp.o] Error 1
+[2.805s] gmake[1]: *** [CMakeFiles/Makefile2:139: CMakeFiles/occupancy_map_publisher.dir/all] Error 2
+[2.806s] gmake: *** [Makefile:146: all] Error 2
+[2.807s] Invoked command in '/home/tayya/path_planning_Astar/build/path_planning_robot' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/tayya/path_planning_Astar/build/path_planning_robot -- -j8 -l8

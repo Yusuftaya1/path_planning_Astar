@@ -1,0 +1,16 @@
+[01m[K/home/tayya/path_planning_Astar/path_planning_robot/src/a_star_planner.cpp:[m[K In member function ‘[01m[Kvoid path_planning_robot::AStarPlanner::mapCallback(nav_msgs::msg::OccupancyGrid_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/tayya/path_planning_Astar/path_planning_robot/src/a_star_planner.cpp:73:14:[m[K [01;31m[Kerror: [m[K‘[01m[Kall_path_lengths_[m[K’ was not declared in this scope
+   73 |         if (![01;31m[Kall_path_lengths_[m[K.empty()) {
+      |              [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/tayya/path_planning_Astar/path_planning_robot/src/a_star_planner.cpp:[m[K In member function ‘[01m[Kbool path_planning_robot::AStarPlanner::findPath(const path_planning_robot::GridNode&, const path_planning_robot::GridNode&)[m[K’:
+[01m[K/home/tayya/path_planning_Astar/path_planning_robot/src/a_star_planner.cpp:133:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kall_path_lengths_[m[K’ was not declared in this scope
+  133 |             [01;31m[Kall_path_lengths_[m[K.push_back(path.size());
+      |             [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/tayya/path_planning_Astar/path_planning_robot/src/a_star_planner.cpp:[m[K In member function ‘[01m[Kbool path_planning_robot::AStarPlanner::isValid(int, int) const[m[K’:
+[01m[K/home/tayya/path_planning_Astar/path_planning_robot/src/a_star_planner.cpp:229:15:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<signed char, std::allocator<signed char> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  229 |     if ([01;35m[Kindex >= map_->data.size()[m[K) {
+      |         [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/a_star_planner.dir/build.make:76: CMakeFiles/a_star_planner.dir/src/a_star_planner.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/a_star_planner.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+gmake: *** [Makefile:146: all] Error 2

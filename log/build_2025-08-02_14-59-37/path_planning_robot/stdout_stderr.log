@@ -1,0 +1,10 @@
+[35m[1mConsolidate compiler generated dependencies of target occupancy_map_publisher[0m
+[ 50%] Built target a_star_planner
+[ 75%] [32mBuilding CXX object CMakeFiles/occupancy_map_publisher.dir/src/occupancy_map_publisher.cpp.o[0m
+[01m[K/home/tayya/path_planning_Astar/path_planning_robot/src/occupancy_map_publisher.cpp:[m[K In constructor ‘[01m[Kpath_planning_robot::OccupancyMapPublisher::OccupancyMapPublisher()[m[K’:
+[01m[K/home/tayya/path_planning_Astar/path_planning_robot/src/occupancy_map_publisher.cpp:19:49:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[Kpath_planning_robot::OccupancyMapPublisher[m[K’ does not have any field named ‘[01m[Ktotal_paths_[m[K’
+   19 | : Node("occupancy_map_publisher"), gen_(rd_()), [01;31m[Ktotal_paths_[m[K(0){
+      |                                                 [01;31m[K^~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/occupancy_map_publisher.dir/build.make:76: CMakeFiles/occupancy_map_publisher.dir/src/occupancy_map_publisher.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:139: CMakeFiles/occupancy_map_publisher.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

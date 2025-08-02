@@ -1,0 +1,64 @@
+[0.008s] Invoking command in '/home/tayya/path_planning_Astar/build/path_planning_robot': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/tayya/path_planning_Astar/path_planning_robot -DCMAKE_INSTALL_PREFIX=/home/tayya/path_planning_Astar/install/path_planning_robot
+[0.056s] -- The C compiler identification is GNU 11.4.0
+[0.102s] -- The CXX compiler identification is GNU 11.4.0
+[0.110s] -- Detecting C compiler ABI info
+[0.169s] -- Detecting C compiler ABI info - done
+[0.175s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.175s] -- Detecting C compile features
+[0.176s] -- Detecting C compile features - done
+[0.178s] -- Detecting CXX compiler ABI info
+[0.250s] -- Detecting CXX compiler ABI info - done
+[0.257s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.257s] -- Detecting CXX compile features
+[0.257s] -- Detecting CXX compile features - done
+[0.259s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.415s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.496s] -- Found rclcpp: 16.0.14 (/opt/ros/humble/share/rclcpp/cmake)
+[0.529s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.532s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.540s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.550s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.562s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.595s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.597s] -- Found rmw_fastrtps_cpp: 6.2.8 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.665s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.687s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.718s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.724s] -- Looking for pthread.h
+[0.784s] -- Looking for pthread.h - found
+[0.785s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.854s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.855s] -- Found Threads: TRUE  
+[0.905s] -- Found nav_msgs: 4.9.0 (/opt/ros/humble/share/nav_msgs/cmake)
+[0.938s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.003s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.004s] -- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/tayya/path_planning_Astar/path_planning_robot/include>
+[1.004s] -- Configured cppcheck exclude dirs and/or files: 
+[1.004s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.005s] -- Added test 'lint_cmake' to check CMake code style
+[1.005s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.006s] -- Added test 'uncrustify' to check C / C++ code style
+[1.007s] -- Configured uncrustify additional arguments: 
+[1.007s] -- Added test 'xmllint' to check XML markup files
+[1.008s] -- Configuring done
+[1.019s] -- Generating done
+[1.023s] -- Build files have been written to: /home/tayya/path_planning_Astar/build/path_planning_robot
+[1.032s] Invoked command in '/home/tayya/path_planning_Astar/build/path_planning_robot' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/tayya/path_planning_Astar/path_planning_robot -DCMAKE_INSTALL_PREFIX=/home/tayya/path_planning_Astar/install/path_planning_robot
+[1.034s] Invoking command in '/home/tayya/path_planning_Astar/build/path_planning_robot': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/tayya/path_planning_Astar/build/path_planning_robot -- -j8 -l8
+[1.075s] [ 25%] [32mBuilding CXX object CMakeFiles/occupancy_map_publisher.dir/src/occupancy_map_publisher.cpp.o[0m
+[1.075s] [ 50%] [32mBuilding CXX object CMakeFiles/a_star_planner.dir/src/a_star_planner.cpp.o[0m
+[3.342s] [01m[K/home/tayya/path_planning_Astar/path_planning_robot/src/a_star_planner.cpp:[m[K In member function ‘[01m[Kbool path_planning_robot::AStarPlanner::isValid(int, int) const[m[K’:
+[3.343s] [01m[K/home/tayya/path_planning_Astar/path_planning_robot/src/a_star_planner.cpp:226:15:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<signed char, std::allocator<signed char> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.343s]   226 |     if ([01;35m[Kindex >= map_->data.size()[m[K) {
+[3.343s]       |         [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~[m[K
+[5.630s] [ 75%] [32m[1mLinking CXX executable occupancy_map_publisher[0m
+[5.802s] /usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o: in function `_start':
+[5.802s] (.text+0x1b): undefined reference to `main'
+[5.824s] collect2: error: ld returned 1 exit status
+[5.825s] gmake[2]: *** [CMakeFiles/occupancy_map_publisher.dir/build.make:175: occupancy_map_publisher] Error 1
+[5.825s] gmake[1]: *** [CMakeFiles/Makefile2:139: CMakeFiles/occupancy_map_publisher.dir/all] Error 2
+[5.825s] gmake[1]: *** Waiting for unfinished jobs....
+[9.136s] [100%] [32m[1mLinking CXX executable a_star_planner[0m
+[9.539s] [100%] Built target a_star_planner
+[9.540s] gmake: *** [Makefile:146: all] Error 2
+[9.542s] Invoked command in '/home/tayya/path_planning_Astar/build/path_planning_robot' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/tayya/path_planning_Astar/build/path_planning_robot -- -j8 -l8

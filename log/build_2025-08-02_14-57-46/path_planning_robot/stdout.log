@@ -1,0 +1,3 @@
+[35m[1mConsolidate compiler generated dependencies of target occupancy_map_publisher[0m
+[ 50%] Built target a_star_planner
+[ 75%] [32mBuilding CXX object CMakeFiles/occupancy_map_publisher.dir/src/occupancy_map_publisher.cpp.o[0m
